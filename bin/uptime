@@ -1,0 +1,11 @@
+#!/bin/bash
+
+uptime=$(sed "s/\..*$//" /proc/uptime)
+
+days=$(echo $uptime | awk '{printf "%d", $1 / 86400}')
+hours=$(echo $uptime | awk '{printf "%0d", $1 % 86400 / 3600}')
+minutes=$(echo $uptime | awk '{printf "%0d", $1 % 86400 % 3600 / 60}')
+seconds=$(echo $uptime | awk '{printf "%0d", $1 % 86400 % 3600 % 60}')
+
+echo -e "$days $hours:$minutes:$seconds"
+
