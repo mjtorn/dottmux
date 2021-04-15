@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -eu
+
+test -f ${HOME}/.tmux/battery && {
+    output=$(upower -i $(cat ${HOME}/.tmux/battery) | grep "time to empty" ) ||
+    output="$(upower -i $(cat ${HOME}/.tmux/battery) | grep percentage )"
+    echo -n "| " && echo "$output" | cut -f2 -d: | sed 's/ hours/h/g' | tr -d " " # | tr -d "\n"
+}
+
