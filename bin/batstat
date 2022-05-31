@@ -6,5 +6,12 @@ test -f ${HOME}/.tmux/battery && {
     output=$(upower -i $(cat ${HOME}/.tmux/battery) | grep "time to empty" ) ||
     output="$(upower -i $(cat ${HOME}/.tmux/battery) | grep percentage )"
     echo -n "| " && echo "$output" | cut -f2 -d: | sed 's/ hours/h/g' | tr -d " " # | tr -d "\n"
+    exit 0
 }
 
+# macOS speshul, fix pipefail type thing, but -o pipefail also fails
+test ! -z $(which pmset) && {
+    output="$(pmset -g batt | tail -1 | grep "discharging" | sed 's/(no estimate)/\?\?\?/g' | cut -f3 -d\; | cut -f2 -d' ')h" ||
+    output$(pmset -g batt | tail -1 | cut -f3 -d' ' | sed 's/(.*)\t//g' | tr -d \;)
+    echo -n "| " && echo "${output}"
+}
