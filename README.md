@@ -10,6 +10,8 @@ Installation
 
     ln -s .tmux/tmux.conf .tmux.conf
 
+You can create a file `~/.tmux/local.tmux.conf` with host-specific things.
+
 Resurrection
 ------------
 
