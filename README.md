@@ -6,9 +6,19 @@ mjt's .tmux stuff
 Installation
 ------------
 
-    git clone git://github.com/mjtorn/dottmux.git .tmux/
+    git clone git://github.com/mjtorn/dottmux.git .tmux/ --recurse-submodules
 
     ln -s .tmux/tmux.conf .tmux.conf
+
+Resurrection
+------------
+
+Saving is the default `C-a C-s` for all sessions in the socket.
+
+Maybe this works automatically if there's a ``main`` default
+session name, but as I usually name all of them, a new session
+with any saved name should likely exist and then `C-a C-r`
+should restore all of them.
 
 Battery status
 --------------
