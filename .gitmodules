@@ -1,0 +1,3 @@
+[submodule "tmux-plugins/tmux-resurrect-more"]
+	path = tmux-plugins/tmux-resurrect-more
+	url = https://github.com/dex6/tmux-resurrect-more.git
